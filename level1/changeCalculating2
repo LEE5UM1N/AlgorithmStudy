@@ -1,0 +1,24 @@
+class Solution {
+    public long changeCalculating(int price, int money, int count){
+        long total=0;
+        long answer = -1;
+        
+        for(int i=0;i<count;i++){
+            total=total+(price*(i+1));
+        }
+        
+        answer=total-money;
+        
+        if(answer<0) answer=0;
+        
+        return answer;
+    }
+    
+    public long solution(int price, int money, int count) {
+        long answer = -1;
+        
+        answer=changeCalculating(price, money, count);
+
+        return answer;
+    }
+}
