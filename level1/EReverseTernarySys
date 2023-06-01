@@ -1,0 +1,43 @@
+package com.java.study;
+
+import java.util.Arrays;
+import java.util.stream.Stream;
+
+public class ReverseTernarySys {
+
+	public static int Solution (int n) {
+		int answer=0;
+		String tempString="";
+		
+		//3진수로 변환
+		tempString=Integer.toString(n,3);
+		//String 배열로 쪼개기
+		int[] tempInt=Stream.of(tempString.split("")).mapToInt(Integer::parseInt).toArray();
+		int num=tempInt.length;//배열 길이
+		
+		//String을 int 배열로 쪼개기
+		tempString="";
+		for(int i=0;i<num;i++) {
+			int[] reverseInt=new int[num];
+			reverseInt[i]=tempInt[num-(i+1)];
+			tempString=tempString+reverseInt[i];			
+		}
+		
+		//10진수로 변환
+		answer=Integer.parseInt(tempString,3);
+		
+		return answer;
+	}
+	
+	public static void main(String[] args) {
+		int n=125;
+		int answer=0;
+		
+		answer=Solution(n);
+		System.out.println(answer);
+		
+		return;
+		
+	}
+
+}
