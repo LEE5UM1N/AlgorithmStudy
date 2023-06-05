@@ -1,0 +1,41 @@
+package com.java.study;
+
+public class MakeWierdWorld {
+
+	public static String solution(String s) {
+		String answer="";
+		String lala="";
+		String[] temp= {};
+		String[] lalaTemp= {};
+		
+		temp=s.split(" ", -1);
+		
+		for(int i=0;i<temp.length;i++) {
+			lala=temp[i];
+			lalaTemp=lala.split("");
+			for(int j=0;j<lalaTemp.length;j++) {
+				if(j==0||j%2==0) {
+					answer=answer+lalaTemp[j].toUpperCase();
+				}
+				else {
+					answer=answer+lalaTemp[j].toLowerCase();
+				}
+			}
+			answer=answer+" ";
+			
+		}
+		
+		return answer;
+	}
+	
+	
+	public static void main(String[] args) {
+		String answer="";
+		String s="try hello world";
+		
+		answer=solution(s);
+		
+		System.out.println(answer);
+	}
+
+}
