@@ -1,0 +1,49 @@
+class Solution {
+    public String solution(String s, int n) {
+		String answer = "";
+		String bigLetter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		String smallLetter = "abcdefghijklmnopqrstuvwxyz"; 
+		String[] bigbig=new String[26];
+		String[] small=new String[26];
+		String[] temp;
+		String[] zz;
+		int x=0;
+		
+		bigbig=bigLetter.split("");
+		small=smallLetter.split("");
+		temp=s.split(" ",-1);
+		String[] temp2=new String[temp.length];
+		
+		for(int i=0;i<temp2.length;i++) {
+			temp2[i]="";
+		}
+		
+		for(int i=0;i<temp.length;i++) {
+			zz=temp[i].split("");
+			for(int y=0;y<zz.length;y++) {
+				String haha=zz[y];
+				for(int j=0;j<26;j++) {
+					String hoho=bigbig[j];
+					String hohoho=small[j];
+					if(j+n>=26) {
+						x=j+n-26;
+						if(haha.equals(hoho)) zz[y]=bigbig[x];
+						if(haha.equals(hohoho)) zz[y]=small[x];					
+					}
+					else {
+						if(haha.equals(hoho)) zz[y]=bigbig[j+n];
+						if(haha.equals(hohoho)) zz[y]=small[j+n];
+					}
+				}
+				temp2[i]=temp2[i]+zz[y];
+			}
+		}
+
+		for(int i=0;i<temp2.length;i++) {
+			answer=answer+temp2[i];
+			if(i+1<temp2.length) answer=answer+" ";
+		}
+		
+		return answer;
+    }
+}
